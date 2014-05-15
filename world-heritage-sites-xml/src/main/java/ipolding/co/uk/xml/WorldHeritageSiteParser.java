@@ -41,21 +41,22 @@ public class WorldHeritageSiteParser {
        XPathExpression expr = null;
 
 
-       for (int i = 1; i <= 981; i++)
+       for (int i = 1; i <= 1; i++)
            {
                WorldHeritageSite site = new WorldHeritageSite();
                String siteXpath = String.format("//query/row[%d]/", i);
                expr = xpath.compile(siteXpath + name);
-               site.setName(expr.evaluate(expr));
 
-//               expr = xpath.compile(siteXpath + description);
-//               site.setDescription(expr.evaluate(expr.evaluate(expr)));
-//
-//               expr = xpath.compile(siteXpath + latitude);
-//               site.setLatitude(Double.parseDouble(expr.evaluate(expr.evaluate(expr))));
-//
-//               expr = xpath.compile(siteXpath + longitude);
-//               site.setLongitude(Double.parseDouble(expr.evaluate(expr.evaluate(expr))));
+               site.setName(expr.evaluate(document));
+
+               expr = xpath.compile(siteXpath + description);
+               site.setDescription(expr.evaluate(document));
+
+               expr = xpath.compile(siteXpath + latitude);
+               site.setLatitude(Double.parseDouble(expr.evaluate(document)));
+
+               expr = xpath.compile(siteXpath + longitude);
+               site.setLongitude(Double.parseDouble(expr.evaluate(document)));
                 System.out.println(site.toString());
            }
 

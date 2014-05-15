@@ -13,10 +13,10 @@ public class WorldHeritageSite {
     @Override
     public String toString() {
 
-        return this.getName() + " "
-                + this.getDescription() + " "
-                + this.getLongitude() + " "
-                + this.getLatitude() + " ";
+        return this.getName() + "\n"
+                + this.getDescription() + "\n"
+                + this.getLongitude() + "\n "
+                + this.getLatitude() + "\n";
     }
 
     public String getName() {
