@@ -46,7 +46,7 @@ public class WorldHeritageSiteParser {
                WorldHeritageSite site = new WorldHeritageSite();
                String siteXpath = String.format("//query/row[%d]/", i);
                expr = xpath.compile(siteXpath + name);
-
+               site.setId(i);
                site.setName(expr.evaluate(document));
 
                expr = xpath.compile(siteXpath + description);
@@ -57,7 +57,7 @@ public class WorldHeritageSiteParser {
 
                expr = xpath.compile(siteXpath + longitude);
                site.setLongitude(Double.parseDouble(expr.evaluate(document)));
-                System.out.println(site.toString());
+               worldHeritageSitesList.add(site);
            }
 
        return worldHeritageSitesList;

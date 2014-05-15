@@ -21,5 +21,15 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.jdbi</groupId>
+      <artifactId>jdbi</artifactId>
+      <version>2.53</version>
+    </dependency>
+    <dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <version>1.4.178</version>
+</dependency>
   </dependencies>
 </project>

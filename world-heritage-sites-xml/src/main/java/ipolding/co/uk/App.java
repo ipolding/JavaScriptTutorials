@@ -1,12 +1,21 @@
 package ipolding.co.uk;
 
+import ipolding.co.uk.database.WhsSiteDao;
+import ipolding.co.uk.domain.WorldHeritageSite;
 import ipolding.co.uk.xml.WorldHeritageSiteParser;
 
+import org.h2.jdbcx.JdbcConnectionPool;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
 import org.w3c.dom.*;
 
+
+import javax.sql.DataSource;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
+
+import static com.sun.javafx.fxml.expression.Expression.equalTo;
 
 
 public class App
@@ -34,9 +43,23 @@ public class App
 //        echo(documentWhs);
 //        System.out.println(expr.evaluate(documentWhs));
 
-        parser.getWorldHeritageSite(documentWhs);
+        WorldHeritageSite site = parser.getWorldHeritageSite(documentWhs).get(0);
 
+        DataSource ds = JdbcConnectionPool.create("jdbc:h2:mem:test",
+                "username",
+                "password");
 
+        DBI dbi = new DBI(ds);
+        WhsSiteDao dao = dbi.open(WhsSiteDao.class);
+
+        dao.createSiteTable();
+
+        dao.insert(site.getId(), site.getName(), site.getDescription(), site.getLatitude(), site.getLongitude());
+
+        String name = dao.findNameById(1);
+        System.out.print(name);
+
+        dao.close();
 
 
     }
