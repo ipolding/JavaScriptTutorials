@@ -1,18 +1,24 @@
 package uk.co.ipolding.whsmapper.core;
 
-import ipolding.co.uk.database.WhsSiteDao;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.skife.jdbi.v2.sqlobject.Bind;
 
-/**
- * Created by ian.polding on 15/05/2014.
- */
 public class WorldHeritageSite implements WhsSiteDao {
 
+    private int id;
     private String name;
     private String description;
     private double longitude;
     private double latitude;
-    private int id;
+
+    public WorldHeritageSite(int id, String name, String description, double latitude, double longitude) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
 
     @Override
     public String toString() {
@@ -23,6 +29,7 @@ public class WorldHeritageSite implements WhsSiteDao {
                 + this.getLatitude() + "\n";
     }
 
+    @JsonProperty
     public String getName() {
         return name;
     }
@@ -31,6 +38,7 @@ public class WorldHeritageSite implements WhsSiteDao {
         this.name = name;
     }
 
+    @JsonProperty
     public String getDescription() {
         return description;
     }
@@ -39,6 +47,7 @@ public class WorldHeritageSite implements WhsSiteDao {
         this.description = description;
     }
 
+    @JsonProperty
     public double getLongitude() {
         return longitude;
     }
@@ -47,6 +56,7 @@ public class WorldHeritageSite implements WhsSiteDao {
         this.longitude = longitude;
     }
 
+    @JsonProperty
     public double getLatitude() {
         return latitude;
     }
