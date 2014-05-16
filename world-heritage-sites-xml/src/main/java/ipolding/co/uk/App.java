@@ -39,8 +39,6 @@ public class App
 //            String name = dao.findNameById(1);
 //            System.out.print(name);
         }
-//        dao.createSiteTable();
-
         dao.close();
     }
 }
