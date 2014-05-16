@@ -35,13 +35,14 @@ public class WorldHeritageSiteParser {
     }
 
    public List<WorldHeritageSite> getWorldHeritageSite(Document document) throws Exception {
+       int numberOfSites = whsDocument.getElementsByTagName("site").getLength();
+
        ArrayList<WorldHeritageSite> worldHeritageSitesList = new ArrayList();
        XPathFactory xPathFactory = XPathFactory.newInstance();
        XPath xpath = xPathFactory.newXPath();
        XPathExpression expr = null;
 
-
-       for (int i = 1; i <= 1; i++)
+       for (int i = 1; i <= numberOfSites; i++)
            {
                WorldHeritageSite site = new WorldHeritageSite();
                String siteXpath = String.format("//query/row[%d]/", i);
