@@ -18,11 +18,6 @@ public class WhsMapperApplication extends Application<WhsMapperConfiguration>{
 		}
 	
 	@Override
-	public String getName() {
-		return "hello-world";
-	}
-	
-	@Override
 	public void initialize(Bootstrap<WhsMapperConfiguration> bootstrap){
 //		Nothing to do yet
 		}

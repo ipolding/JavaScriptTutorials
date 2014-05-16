@@ -1,15 +1,16 @@
-package ipolding.co.uk;
+package uk.co.ipolding.whsmapper;
 
-import ipolding.co.uk.database.WhsSiteDao;
-import ipolding.co.uk.domain.WorldHeritageSite;
-import ipolding.co.uk.xml.WorldHeritageSiteParser;
 
 import org.skife.jdbi.v2.DBI;
 import org.w3c.dom.*;
+import uk.co.ipolding.whsmapper.core.WhsDao;
+import uk.co.ipolding.whsmapper.core.WhsSiteDao;
+import uk.co.ipolding.whsmapper.core.WorldHeritageSite;
+import uk.co.ipolding.whsmapper.xmlparser.WorldHeritageSiteParser;
 
 import java.util.List;
 
-import static ipolding.co.uk.database.DatabaseConfiguration.getH2DatabaseInstance;
+import static uk.co.ipolding.whsmapper.database.DatabaseConfiguration.getH2DatabaseInstance;
 
 public class App
 {
@@ -29,7 +30,7 @@ public class App
         List<WorldHeritageSite> siteList = parser.getWorldHeritageSite(documentWhs);
 
         DBI dbi = getH2DatabaseInstance();
-        WhsSiteDao dao = dbi.open(WhsSiteDao.class);
+        WhsDao dao = dbi.open(WhsDao.class);
 
         dao.createSiteTable();
 
