@@ -29,8 +29,8 @@ server:
       port: 8080
     - type: https
       port: 8443
-      keyStorePath: example.keystore
-      keyStorePassword: example
+      #keyStorePath: example.keystore
+      #keyStorePassword: example
       validateCerts: false
 # this requires the npn-boot library on the JVM's boot classpath
 #    - type: spdy3

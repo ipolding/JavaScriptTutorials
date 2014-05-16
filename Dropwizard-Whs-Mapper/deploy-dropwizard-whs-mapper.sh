@@ -3,4 +3,4 @@ do
 	kill -9 $line
 done
 
-java -jar target/DropWizard-Getting-Started-0.0.1-SNAPSHOT.jar server hello-world.yml
+java -jar target/DropWizard-Whs-Mapper-0.0.1-SNAPSHOT.jar server src/main/resources/whs-mapper.yml
