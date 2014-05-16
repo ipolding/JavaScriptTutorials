@@ -9,7 +9,7 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
  */
 public interface WhsSiteDao {
 
-    @SqlUpdate("CREATE TABLE SITES (ID INT PRIMARY KEY, NAME VARCHAR(200), DESCRIPTION VARCHAR(500), LATITUDE DOUBLE PRECISION NOT NULL, LONGITUDE DOUBLE PRECISION NOT NULL)")
+    @SqlUpdate("CREATE TABLE SITES (ID INT PRIMARY KEY, NAME VARCHAR(200), DESCRIPTION VARCHAR(1704), LATITUDE DOUBLE PRECISION NOT NULL, LONGITUDE DOUBLE PRECISION NOT NULL)")
     void createSiteTable();
 
     @SqlUpdate("insert into sites (id, name, description, longitude, latitude) values (:id, :name, :description, :latitude, :longitude)")

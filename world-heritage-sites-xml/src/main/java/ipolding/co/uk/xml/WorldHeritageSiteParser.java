@@ -1,6 +1,8 @@
 package ipolding.co.uk.xml;
 
 import ipolding.co.uk.domain.WorldHeritageSite;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -13,7 +15,7 @@ import java.util.List;
 
 public class WorldHeritageSiteParser {
 
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(WorldHeritageSiteParser.class);
 
     static final String outputEncoding = "UTF-8";
     static final String worldHeritageXmlFile = "whc-en.xml";
@@ -44,11 +46,14 @@ public class WorldHeritageSiteParser {
 
        for (int i = 1; i <= numberOfSites; i++)
            {
+
                WorldHeritageSite site = new WorldHeritageSite();
                String siteXpath = String.format("//query/row[%d]/", i);
                expr = xpath.compile(siteXpath + name);
                site.setId(i);
                site.setName(expr.evaluate(document));
+
+               LOGGER.info("Parsing site: " + site.getName());
 
                expr = xpath.compile(siteXpath + description);
                site.setDescription(expr.evaluate(document));

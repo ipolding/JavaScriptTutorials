@@ -20,4 +20,13 @@ public class DatabaseConfiguration {
         return new DBI(ds);
     }
 
+    public static DBI getH2MemoryDatabaseInstance() {
+
+        DataSource ds = JdbcConnectionPool.create("jdbc:h2:mem:test",
+                "ian",
+                "password");
+
+        return new DBI(ds);
+    }
+
  }

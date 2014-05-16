@@ -19,6 +19,9 @@
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.felix:org.apache.felix.ipojo.annotations:1.11.2" level="project" />
     <orderEntry type="library" name="Maven: org.wisdom-framework:abstract-jdbc-driver:0.4" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.2" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.6" level="project" />
   </component>
 </module>
 
