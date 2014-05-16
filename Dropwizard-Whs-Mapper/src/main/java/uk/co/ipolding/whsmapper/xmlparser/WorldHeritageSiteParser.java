@@ -1,7 +1,6 @@
 package uk.co.ipolding.whsmapper.xmlparser;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import uk.co.ipolding.whsmapper.core.WorldHeritageSite;
 
 import javax.xml.parsers.DocumentBuilder;

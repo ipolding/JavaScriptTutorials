@@ -25,10 +25,17 @@ public class WhsMapperApplication extends Application<WhsMapperConfiguration>{
 		}
 	
 	public void run(HelloWorldConfiguration configuration, Environment environment){
-		final WhsMapperResource resource = new WhsMapperResource(
-				configuration.getTemplate(),
-				configuration.getDefaultName()
+
+		final DBIFactory factory = new DBIFactory();
+    	final DBI jdbi = factory.build(environment, config.getDatabaseConfiguration(), "h2");
+    	final WhsSiteDAO dao = jdbi.onDemand(WhsSiteDao.class); // this creates an object that implements the Dao interface.
+    	
+		final WhsSiteResource resource = new WhsMapperResource(configuration.getTemplate(), configuration.getDefaultName(),
+				dao
 		);
+
+		environment.addResource(new WhsSiteResource(dao));
+
 		final TemplateHealthCheck healthCheck =
 		        new TemplateHealthCheck(configuration.getTemplate());
 		    environment.healthChecks().register("template", healthCheck);

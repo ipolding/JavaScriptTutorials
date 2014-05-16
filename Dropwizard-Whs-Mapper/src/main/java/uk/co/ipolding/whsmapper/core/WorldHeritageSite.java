@@ -3,7 +3,7 @@ package uk.co.ipolding.whsmapper.core;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.skife.jdbi.v2.sqlobject.Bind;
 
-public class WorldHeritageSite implements WhsSiteDao {
+public class WorldHeritageSite implements WhsDao {
 
     private int id;
     private String name;
