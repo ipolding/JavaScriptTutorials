@@ -1,5 +1,7 @@
 package uk.co.ipolding.whsmapper.xmlparser;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import uk.co.ipolding.whsmapper.core.WorldHeritageSite;
 

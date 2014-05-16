@@ -2,22 +2,25 @@ package uk.co.ipolding.whsmapper;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 public class WhsMapperConfiguration extends Configuration {
 
 
-	@valid
+	@Valid
 	@NotNull
 	@JsonProperty
-	private DatabaseConfiguration database = new DatabaseConfiguration();
+	private DataSourceFactory database = new DataSourceFactory();
 
-	public DatabaseConfiguration getDatabaseConfiguration() {
-		return database;
-	}
+    public DataSourceFactory getDataSourceFactory() {
+        return database;
+    }
 
-
-	@NotEmpty
+    @NotEmpty
 	private String template;
 	
 	@NotEmpty

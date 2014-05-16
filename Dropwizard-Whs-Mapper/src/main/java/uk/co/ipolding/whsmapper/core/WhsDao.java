@@ -3,6 +3,7 @@ package uk.co.ipolding.whsmapper.core;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 
 /**
  * Created by Ian on 15/05/14.
@@ -17,6 +18,10 @@ public interface WhsDao {
 
     @SqlQuery("select name from sites where id = :id")
     String findNameById(@Bind("id") int id);
+
+    @SqlQuery("select * from sites where id = :id")
+    @Mapper(WorldHeritageSiteMapper.class)
+    WorldHeritageSite findById(@Bind("id") int id);
 
     /**
      * close with no args is used to close the connection

@@ -2,8 +2,11 @@ package uk.co.ipolding.whsmapper;
 
 
 
+import io.dropwizard.jdbi.DBIFactory;
+import org.skife.jdbi.v2.DBI;
+import uk.co.ipolding.whsmapper.core.WhsDao;
 import uk.co.ipolding.whsmapper.health.TemplateHealthCheck;
-import uk.co.ipolding.whsmapper.resources.WhsMapperResource;
+import uk.co.ipolding.whsmapper.resources.WhsResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -20,26 +23,22 @@ public class WhsMapperApplication extends Application<WhsMapperConfiguration>{
 	}
 	
 	@Override
-	public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap){
+	public void initialize(Bootstrap<WhsMapperConfiguration> bootstrap){
 //		Nothing to do yet
 		}
 	
-	public void run(HelloWorldConfiguration configuration, Environment environment){
+	public void run(WhsMapperConfiguration configuration, Environment environment)throws ClassNotFoundException{
 
 		final DBIFactory factory = new DBIFactory();
-    	final DBI jdbi = factory.build(environment, config.getDatabaseConfiguration(), "h2");
-    	final WhsSiteDAO dao = jdbi.onDemand(WhsSiteDao.class); // this creates an object that implements the Dao interface.
-    	
-		final WhsSiteResource resource = new WhsMapperResource(configuration.getTemplate(), configuration.getDefaultName(),
-				dao
-		);
+    	final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "h2");
+    	final WhsDao dao = jdbi.onDemand(WhsDao.class); // this creates an object that implements the Dao interface.
 
-		environment.addResource(new WhsSiteResource(dao));
+		environment.jersey().register(new WhsResource(dao));
 
 		final TemplateHealthCheck healthCheck =
 		        new TemplateHealthCheck(configuration.getTemplate());
 		    environment.healthChecks().register("template", healthCheck);
-	    environment.jersey().register(resource);
+
 
 	}
 	
