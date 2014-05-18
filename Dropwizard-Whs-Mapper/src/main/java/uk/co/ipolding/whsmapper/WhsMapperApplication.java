@@ -30,9 +30,7 @@ public class WhsMapperApplication extends Application<WhsMapperConfiguration>{
 
 		environment.jersey().register(new WhsResource(dao));
 
-		final TemplateHealthCheck healthCheck =
-		        new TemplateHealthCheck(configuration.getTemplate());
-		    environment.healthChecks().register("template", healthCheck);
+
 
 
 	}

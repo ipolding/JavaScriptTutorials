@@ -20,31 +20,7 @@ public class WhsMapperConfiguration extends Configuration {
         return database;
     }
 
-    @NotEmpty
-	private String template;
-	
-	@NotEmpty
-	private String defaultName = "Stranger";
-	
 	// this lets jackson deserialize this information from the YAML file
-	@JsonProperty
-	public String getTemplate() {
-		return template;
-	}
-	
-	@JsonProperty
-	public void setTemplate(String template) {
-		this.template = template;
-	}
-	
-	@JsonProperty
-	public String getDefaultName() {
-	    return defaultName;
-	    }
 
-	    @JsonProperty
-	public void setDefaultName(String name) {
-	    this.defaultName = name;
-	    }
 
 }
