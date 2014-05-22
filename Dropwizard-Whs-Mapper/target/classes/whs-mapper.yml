@@ -15,7 +15,7 @@ server:
   type: simple
   connector:
     type: http
-    port: 8080
+    port: 1234
 
 #server:
 #  softNofileLimit: 1000

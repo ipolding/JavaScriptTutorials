@@ -7,10 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import uk.co.ipolding.whsmapper.core.WhsDao;
+import uk.co.ipolding.whsmapper.jdbi.WhsDao;
 import uk.co.ipolding.whsmapper.core.WorldHeritageSite;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 @Path("/whs")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,8 +21,7 @@ public class WhsResource {
 	}
 	
 	@GET
-	@Timed // Dropwizard automatically records the duration and rate of its invocations as a Metrics Timer.
-	public WorldHeritageSite getById(@QueryParam("id") int id) {
+    public WorldHeritageSite getById(@QueryParam("id") int id) {
 		return dao.findById(id);
 	}
 }

@@ -4,8 +4,7 @@ package uk.co.ipolding.whsmapper;
 
 import io.dropwizard.jdbi.DBIFactory;
 import org.skife.jdbi.v2.DBI;
-import uk.co.ipolding.whsmapper.core.WhsDao;
-import uk.co.ipolding.whsmapper.health.TemplateHealthCheck;
+import uk.co.ipolding.whsmapper.jdbi.WhsDao;
 import uk.co.ipolding.whsmapper.resources.WhsResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -27,7 +26,7 @@ public class WhsMapperApplication extends Application<WhsMapperConfiguration>{
 		final DBIFactory factory = new DBIFactory();
     	final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "h2");
     	final WhsDao dao = jdbi.onDemand(WhsDao.class); // this creates an object that implements the Dao interface.
-
+        System.out.println("text from within run");
 		environment.jersey().register(new WhsResource(dao));
 
 
