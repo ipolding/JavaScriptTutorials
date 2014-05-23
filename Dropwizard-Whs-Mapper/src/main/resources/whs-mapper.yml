@@ -11,11 +11,11 @@ database:
   password: password
 
 # use the simple server factory if you only want to run on a single port
-server:
-  type: simple
-  connector:
-    type: http
-    port: 1234
+#server:
+#type: simple
+#connector:
+#type: http
+#port: 1234
 
 #server:
 #  softNofileLimit: 1000
@@ -47,7 +47,7 @@ server:
 logging:
 
   # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
-  level: DEBUG
+  level: INFO
 
   # Logger-specific levels.
   loggers:
