@@ -31,11 +31,6 @@
 
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
-
-
-
-
-
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
@@ -59,33 +54,24 @@
 
       <div ng-controller="MapCtrl">
         I am in {{site}}
-      </div>
-
-<script>
-  function Ctrl($scope) {
-    $scope.list = [];
-    $scope.text = 'hello';
-    $scope.submit = function() {
-      var myLatlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title:"Hello World!"});
-
-
       
-      }
-    };  
-</script>
 
- 
-     <form ng-submit="submit()" ng-controller="Ctrl">
+     <form ng-submit="addMarker()" >
 
-  Latitude: <input name="input" ng-model="latitude" required>
-  Longitude: <input name="input" ng-model="longitude" required>
+  Latitude: <input required
+              name="latitude" min="-90" max="90" 
+              type="number" 
+              ng-model="latitude" >
+  Longitude: <input required 
+                name="longitude" min="-180" max="180"
+                type="number" 
+                ng-model="longitude"
+                ngMinLength >
  
 <input type="submit" id="submit" value="Add Marker" />
   </form>
+
+  </div>
 
       <button>Adds a marker</button> </h1>
 
