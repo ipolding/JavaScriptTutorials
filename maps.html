@@ -10,12 +10,13 @@
       <script src="angular.js"></script>
       <script src="js/init_map.js"></script>
       <script src="js/controllers.js"></script>
+      <script src="js/angular-resource.js"></script>
   </head>
   <body ng-controller="MapCtrl">
     <h1>Angular is working if 2 + 2 = {{2+2}}</h1>
 
       
-        I am in {{site}}
+        The first API call gives me {{apiCall.name}}
       
 
      <form ng-submit="addMarker()" >

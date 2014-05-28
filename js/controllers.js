@@ -1,9 +1,16 @@
-var whsMapper = angular.module('whsMapper', []);
+var whsMapper = angular.module('whsMapper', ['ngResource']);
 
-whsMapper.controller('MapCtrl', ['$scope', 
 
-	function ($scope) {
-		$scope.site = 'Budapest';
+
+whsMapper.controller('MapCtrl', ['$scope', '$resource',  
+
+	function ($scope, $resource) {
+		$scope.testData = 'Budapest';
+
+		var dataService = $resource('http://localhost/whs/site?id=2')
+		$scope.apiCall = dataService.get();
+		 
+
 		$scope.latitude;
 		$scope.longitude;
 

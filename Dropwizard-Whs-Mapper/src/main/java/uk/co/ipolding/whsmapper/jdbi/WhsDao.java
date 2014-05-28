@@ -7,6 +7,8 @@ import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import uk.co.ipolding.whsmapper.core.WorldHeritageSite;
 import uk.co.ipolding.whsmapper.core.WorldHeritageSiteMapper;
 
+import java.util.List;
+
 /**
  * Created by Ian on 15/05/14.
  */
@@ -17,6 +19,10 @@ public interface WhsDao {
 
     @SqlUpdate("insert into sites (id, name, description, longitude, latitude) values (:id, :name, :description, :latitude, :longitude)")
     void insert(@Bind("id") int id, @Bind("name") String name, @Bind("description") String description, @Bind("latitude") Double latitude, @Bind("longitude") Double longitude);
+
+    @SqlQuery("select * from sites")
+    @Mapper(WorldHeritageSiteMapper.class)
+    List<WorldHeritageSite> findAll();
 
     @SqlQuery("select name from sites where id = :id")
     String findNameById(@Bind("id") int id);
