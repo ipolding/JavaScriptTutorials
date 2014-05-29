@@ -7,7 +7,7 @@ whsMapper.controller('MapCtrl', ['$scope', '$resource',
 	function ($scope, $resource) {
 		$scope.testData = 'Budapest';
 
-		var dataService = $resource('http://localhost/whs/site?id=2')
+		var dataService = $resource('/whs/site?id=2')
 		$scope.apiCall = dataService.get();
 		 
 
