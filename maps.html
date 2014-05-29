@@ -41,8 +41,9 @@
 
   Search: <input ng-model="searchTerm" >
   <br>
-  Results: <tr ng-repeat="site in sites" > <!-- | filter:searchTerm"> -->
-    <td>{{side.name}}</td>
+  Results: <li ng-repeat="site in countries" > <!-- | filter:searchTerm"> -->
+    {{site.name}}
+    </li>
     
   </tr>
 

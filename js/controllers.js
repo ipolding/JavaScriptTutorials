@@ -8,8 +8,14 @@ whsMapper.controller('MapCtrl', ['$scope', '$resource',
 	function ($scope, $resource) {
 		$scope.testData = 'Budapest';
 
-		var dataService = $resource('/whs/site?id=2')
-		$scope.sites = dataService.get();
+		var dataService = $resource('/whs/all')
+		// $scope.sites = dataService.get();
+
+		$scope.countries = [
+			{name:"england", language: "english" }, 
+			{name:"germany", language: "german" }, 
+			{name:"france", language: "french" }
+		]
 		 
 
 		$scope.latitude;
