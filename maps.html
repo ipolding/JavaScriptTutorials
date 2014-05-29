@@ -16,10 +16,10 @@
     <h1>Angular is working if 2 + 2 = {{2+2}}</h1>
 
       
-        The first API call gives me {{apiCall.name}}
+        The first API call gives me {{sites.name}}
       
 
-     <form ng-submit="addMarker()" >
+     <form ng-submit="addMarkerManually()" >
 
   Latitude: <input required
               name="latitude" min="-90" max="90" 
@@ -31,15 +31,24 @@
                 type="number" 
                 ng-model="longitude"
                 ngMinLength >
+
+
  
 <input type="submit" id="submit" value="Add Marker" />
   </form>
 
+
+
+  Search: <input ng-model="searchTerm" >
+  <br>
+  Results: <tr ng-repeat="site in sites" > <!-- | filter:searchTerm"> -->
+    <td>{{side.name}}</td>
+    
+  </tr>
+
   </div>
 
-      <button>Adds a marker</button> </h1>
-
-    <p>Nothing here {{'yet' + '!'}}</p>
+  <p>Nothing here {{'yet' + '!'}}</p>
  <div id="map-canvas"/>
 
 
