@@ -32,10 +32,6 @@ public class WhsResource {
     @GET
     @Path("/all")
     public List<WorldHeritageSite> getAll() {
-        ArrayList<WorldHeritageSite> tempSiteList = new ArrayList();
-        tempSiteList.add(dao.findById(1));
-        tempSiteList.add(dao.findById(2));
-        tempSiteList.add(dao.findById(3));
-        return tempSiteList;        
+        return dao.findAll();
     }
 }
