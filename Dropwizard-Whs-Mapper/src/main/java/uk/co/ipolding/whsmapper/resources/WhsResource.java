@@ -11,6 +11,7 @@ import uk.co.ipolding.whsmapper.jdbi.WhsDao;
 import uk.co.ipolding.whsmapper.core.WorldHeritageSite;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Path("/whs")
 @Produces(MediaType.APPLICATION_JSON)
@@ -30,7 +31,11 @@ public class WhsResource {
 
     @GET
     @Path("/all")
-    List<WorldHeritageSite> getAll() {
-        return dao.findAll();
+    public List<WorldHeritageSite> getAll() {
+        ArrayList<WorldHeritageSite> tempSiteList = new ArrayList();
+        tempSiteList.add(dao.findById(1));
+        tempSiteList.add(dao.findById(2));
+        tempSiteList.add(dao.findById(3));
+        return tempSiteList;        
     }
 }
