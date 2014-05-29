@@ -41,8 +41,10 @@
 
   Search: <input ng-model="searchTerm" >
   <br>
-  Results: <li ng-repeat="site in filtered = (sites | filter: searchTerm)">
-    {{site.name}} is at {{site.latitude}}  and {{site.latitude}}<button ng-click="addMarker(site.latitude, site.longitude)">Map me</button >
+  Results: <li ng-show="searchTerm" ng-repeat="site in filtered = (sites | filter: searchTerm)">
+    <lable>Name:</label> {{site.name}}
+    Latitude: {{site.latitude}}
+    Longitude: {{site.longitude}}<button ng-click="addMarker(site.latitude, site.longitude)">Map me</button >
    
     </li>
     
